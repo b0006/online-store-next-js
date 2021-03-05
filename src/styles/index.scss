@@ -3,6 +3,8 @@
 @import './typography';
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 
   &::before,
@@ -21,11 +23,11 @@ body,
 #__next {
   height: 100%;
   margin: 0;
+  overflow-x: hidden;
 }
 
 html {
   margin-right: calc(-1 * (100vw - 100%));
-  overflow-x: hidden;
 }
 
 button {
