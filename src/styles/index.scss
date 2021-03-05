@@ -1,6 +1,7 @@
 @import './font';
 @import './color';
 @import './typography';
+@import './grid';
 
 * {
   box-sizing: border-box;
@@ -25,6 +26,7 @@ body,
 
 html {
   margin-right: calc(-1 * (100vw - 100%));
+  overflow-x: hidden;
 }
 
 button {

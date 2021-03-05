@@ -9,7 +9,7 @@ import CircleClose from '../modules/common/components/CircleClose';
 import Input from '../modules/common/components/Input';
 
 const STYLE_SECTION = {
-  margin: '10px 20px',
+  margin: '10px 0',
   padding: '20px',
   border: '1px solid black',
 };
@@ -18,7 +18,7 @@ export default function UI(): JSX.Element {
   const [inputText, setInputText] = React.useState('');
 
   return (
-    <div>
+    <div className="container">
       <div style={STYLE_SECTION}>
         <h2>Input</h2>
         <Input placeholder="Label" value={inputText} onChange={(e) => setInputText(e.target.value)} />
