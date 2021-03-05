@@ -1,5 +1,6 @@
 @import './font';
 @import './color';
+@import './typography';
 
 * {
   box-sizing: border-box;
@@ -12,7 +13,7 @@
 
 body {
   background-color: $c-body;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-family-primary, 'Arial', sans-serif;
 }
 
 html,
