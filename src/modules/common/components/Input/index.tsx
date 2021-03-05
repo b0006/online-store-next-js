@@ -17,7 +17,16 @@ const Input = React.forwardRef((props: IProps, ref: React.LegacyRef<HTMLInputEle
 
   return (
     <label className={cn(className, styles.wrapper)}>
-      <input {...rest} className={styles.input} ref={ref} value={value} required={required} autoComplete="off" />
+      <input
+        {...rest}
+        className={cn(styles.input, {
+          [styles.input_error]: error,
+        })}
+        ref={ref}
+        value={value}
+        required={required}
+        autoComplete="off"
+      />
       <div className={cn(styles.title, { [styles.title_value]: hasValue, [styles.title_required]: required })}>
         {icon && <Icon className={cn(styles.icon, { [styles.icon_value]: hasValue })} type={icon} />}
         <span>{placeholder}</span>

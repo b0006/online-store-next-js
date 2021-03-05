@@ -1,6 +1,7 @@
 import React from 'react';
-import Container from '../Container';
+import { Hidden } from 'react-grid-system';
 
+import Container from '../Container';
 import Logo from './Logo';
 import MenuDesktop from './MenuDesktop';
 
@@ -14,9 +15,11 @@ const Header: React.FC = () => {
           <div className={styles.logo}>
             <Logo />
           </div>
-          <div className={styles.menu}>
-            <MenuDesktop />
-          </div>
+          <Hidden xs sm md lg>
+            <div className={styles.menu}>
+              <MenuDesktop />
+            </div>
+          </Hidden>
         </div>
       </div>
     </Container>

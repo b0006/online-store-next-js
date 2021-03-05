@@ -46,9 +46,17 @@
   font-size: 18px;
   line-height: 21px;
   border: none;
-  border-bottom: 1px solid $c-link;
+  border-bottom: 2px solid $c-link;
   padding-bottom: 7px;
   transition: border-bottom 0.2s;
+
+  &_error {
+    border-bottom: 2px solid $c-danger;
+
+    & ~ .title {
+      color: $c-danger;
+    }
+  }
 
   &:focus ~ .title {
     bottom: 22px;
@@ -61,7 +69,7 @@
   }
 
   &:focus {
-    border-bottom: 1px solid $c-primary;
+    border-bottom: 2px solid $c-primary;
   }
 }
 
