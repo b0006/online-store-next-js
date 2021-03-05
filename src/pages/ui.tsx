@@ -4,9 +4,10 @@ import Button from '../modules/common/components/Button';
 import Badge from '../modules/common/components/Badge';
 import Icon from '../modules/common/components/Icon';
 import Arrow from '../modules/common/components/Arrow';
+import Breadcrumbs from '../modules/common/components/Breadcrumbs';
 
 const STYLE_SECTION = {
-  margin: '0 20px',
+  margin: '10px 20px',
   padding: '20px',
   border: '1px solid black',
 };
@@ -14,7 +15,6 @@ const STYLE_SECTION = {
 export default function UI(): JSX.Element {
   return (
     <div>
-      <h1>UI page</h1>
       <div style={STYLE_SECTION}>
         <h2>Buttons</h2>
         <Button>Primary</Button>
@@ -54,6 +54,16 @@ export default function UI(): JSX.Element {
           <Arrow direction="left" theme="rounded" />
           <Arrow direction="right" theme="rounded" />
         </div>
+      </div>
+      <div style={STYLE_SECTION}>
+        <h2>Breadcrumbs</h2>
+        <Breadcrumbs
+          links={[
+            { href: '/', label: 'Home' },
+            { href: '/test', label: 'Test' },
+            { href: '/ui', label: 'UI' },
+          ]}
+        />
       </div>
     </div>
   );

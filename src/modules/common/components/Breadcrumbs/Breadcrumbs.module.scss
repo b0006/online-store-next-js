@@ -1,0 +1,25 @@
+@import '@/styles/utils';
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+
+  &__item {
+    font-size: 18px;
+    color: $c-text-muted;
+    text-decoration: none;
+
+    &_active {
+      color: $c-text;
+    }
+
+    &:not(:first-child) {
+      padding-left: 20px;
+    }
+
+    &:not(:last-child) {
+      padding-right: 20px;
+      border-right: 1px solid $c-text-muted;
+    }
+  }
+}
