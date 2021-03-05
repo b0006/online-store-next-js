@@ -1,0 +1,87 @@
+@import '@/styles/utils';
+
+.close {
+  $self: &;
+
+  border: none;
+  background-color: $c-primary;
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+
+  &_badge {
+    &::after {
+      position: absolute;
+      top: -5px;
+      right: -12px;
+      content: attr(data-count);
+      color: $c-white;
+      font-weight: bold;
+      background-color: $c-danger;
+      font-size: 12px;
+      line-height: 16px;
+      border-radius: 20px;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &_big {
+    padding: 14px;
+
+    #{$self}__icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 5px $c-primary-variant;
+    }
+
+    &:active {
+      box-shadow: 0 0 0 8px $c-primary-variant;
+    }
+  }
+
+  &_small {
+    padding: 9px;
+    line-height: 0;
+
+    #{$self}__icon {
+      width: 8px;
+      height: 8px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 2px $c-primary-variant;
+    }
+
+    &:active {
+      background-color: $c-primary-variant;
+    }
+  }
+
+  &__icon {
+    color: $c-white;
+  }
+
+  &_disable {
+    cursor: not-allowed;
+    background-color: $c-light;
+
+    &:hover {
+      box-shadow: unset;
+    }
+
+    &:active {
+      box-shadow: unset;
+    }
+
+    #{$self}__icon {
+      color: $c-text-disable;
+    }
+  }
+}

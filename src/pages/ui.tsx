@@ -5,6 +5,7 @@ import Badge from '../modules/common/components/Badge';
 import Icon from '../modules/common/components/Icon';
 import Arrow from '../modules/common/components/Arrow';
 import Breadcrumbs from '../modules/common/components/Breadcrumbs';
+import CircleClose from '../modules/common/components/CircleClose';
 
 const STYLE_SECTION = {
   margin: '10px 20px',
@@ -64,6 +65,16 @@ export default function UI(): JSX.Element {
             { href: '/ui', label: 'UI' },
           ]}
         />
+      </div>
+      <div style={STYLE_SECTION}>
+        <h2>CircleClose Big</h2>
+        <CircleClose size="big" />
+        <h2>CircleClose Big with badge</h2>
+        <CircleClose size="big" data-count="12" />
+        <h2>CircleClose Small</h2>
+        <CircleClose size="small" />
+        <h2>CircleClose disable</h2>
+        <CircleClose disabled />
       </div>
     </div>
   );
