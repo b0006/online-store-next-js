@@ -1,11 +1,35 @@
 @font-face {
-  font-family: "Montserrat";
-  src: url('../assets/fonts/montserrat/Montserrat-Bold.ttf');
-  font-weight: bold;
+  font-family: "Roboto";
+  src: url('../assets/fonts/roboto/Roboto-Bold.ttf');
+  font-weight: 600;
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url('../assets/fonts/montserrat/Montserrat-Medium.ttf');
-  font-weight: normal;
+  font-family: "Roboto";
+  src: url('../assets/fonts/roboto/Roboto-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('../assets/fonts/roboto/Roboto-Thin.ttf');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url('../assets/fonts/raleway/Raleway-Bold.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url('../assets/fonts/raleway/Raleway-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url('../assets/fonts/raleway/Raleway-Thin.ttf');
+  font-weight: 200;
 }
