@@ -1,9 +1,10 @@
 import React from 'react';
+import Container from '../modules/layout/components/Container';
 
 export default function Home(): JSX.Element {
   return (
-    <div className="container">
+    <Container>
       <h1>Home page</h1>
-    </div>
+    </Container>
   );
 }

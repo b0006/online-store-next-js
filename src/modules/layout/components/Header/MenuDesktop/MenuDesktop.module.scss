@@ -1,0 +1,35 @@
+@import '@/styles/utils';
+
+.list {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    font-family: $font-family-secondary;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    position: relative;
+    min-width: 98px;
+    min-height: 80px;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_active {
+      font-weight: bold;
+
+      &::after {
+        position: absolute;
+        content: '';
+        border-bottom: 2px solid $c-primary;
+        width: 100%;
+        bottom: 0;
+      }
+    }
+  }
+}

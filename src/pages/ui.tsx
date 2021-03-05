@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Container from '../modules/layout/components/Container';
 import Button from '../modules/common/components/Button';
 import Badge from '../modules/common/components/Badge';
 import Icon from '../modules/common/components/Icon';
@@ -18,7 +19,7 @@ export default function UI(): JSX.Element {
   const [inputText, setInputText] = React.useState('');
 
   return (
-    <div className="container">
+    <Container>
       <div style={STYLE_SECTION}>
         <h2>Input</h2>
         <Input placeholder="Label" value={inputText} onChange={(e) => setInputText(e.target.value)} />
@@ -94,6 +95,6 @@ export default function UI(): JSX.Element {
         <h2>CircleClose disable</h2>
         <CircleClose disabled />
       </div>
-    </div>
+    </Container>
   );
 }
