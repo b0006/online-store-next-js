@@ -1,11 +1,13 @@
 import type { AppProps /*, AppContext */ } from 'next/app';
 import Head from 'next/head';
 
+import Layout from '../modules/layout/components/Layout';
+
 import 'src/styles/index.scss';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Online shop</title>
         <link rel="icon" href="/favicon.ico" />
@@ -13,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Component {...pageProps} />
-    </div>
+    </Layout>
   );
 }
 
