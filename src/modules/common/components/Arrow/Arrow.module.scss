@@ -6,11 +6,13 @@
   padding: 10px 16px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.2s;
 
   &-icon {
     width: 25px;
     height: 12px;
     color: $c-dark;
+    transition: color 0.2s;
 
     &_left {
       transform: rotate(0deg);
