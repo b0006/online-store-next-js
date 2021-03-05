@@ -1,0 +1,74 @@
+@import '@/styles/utils';
+
+.wrapper {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 18px;
+  line-height: 21px;
+  transition: bottom 0.2s, font-size 0.2s;
+
+  &_value {
+    bottom: 22px;
+    font-size: 12px;
+  }
+
+  &_required {
+    &::after {
+      content: '*';
+      color: $c-danger;
+      position: absolute;
+      right: -12px;
+      top: -3px;
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  transition: width 0.2s, height 0.2s;
+  position: relative;
+  bottom: -1px;
+
+  &_value {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.input {
+  font-size: 18px;
+  line-height: 21px;
+  border: none;
+  border-bottom: 1px solid $c-link;
+  padding-bottom: 7px;
+  transition: border-bottom 0.2s;
+
+  &:focus ~ .title {
+    bottom: 22px;
+    font-size: 12px;
+  }
+
+  &:focus ~ .title .icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  &:focus {
+    border-bottom: 1px solid $c-primary;
+  }
+}
+
+.error {
+  display: block;
+  position: absolute;
+  color: $c-danger;
+  bottom: -28px;
+  font-size: 12px;
+}

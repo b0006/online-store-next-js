@@ -6,6 +6,7 @@ import Icon from '../modules/common/components/Icon';
 import Arrow from '../modules/common/components/Arrow';
 import Breadcrumbs from '../modules/common/components/Breadcrumbs';
 import CircleClose from '../modules/common/components/CircleClose';
+import Input from '../modules/common/components/Input';
 
 const STYLE_SECTION = {
   margin: '10px 20px',
@@ -14,8 +15,25 @@ const STYLE_SECTION = {
 };
 
 export default function UI(): JSX.Element {
+  const [inputText, setInputText] = React.useState('');
+
   return (
     <div>
+      <div style={STYLE_SECTION}>
+        <h2>Input</h2>
+        <Input placeholder="Label" value={inputText} onChange={(e) => setInputText(e.target.value)} />
+        <h2>Input required</h2>
+        <Input required placeholder="Label" value={inputText} onChange={(e) => setInputText(e.target.value)} />
+        <h2>Input with icon</h2>
+        <Input icon="resting" placeholder="Label" value={inputText} onChange={(e) => setInputText(e.target.value)} />
+        <h2>Input with error</h2>
+        <Input
+          placeholder="Label"
+          error="Error message"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
+      </div>
       <div style={STYLE_SECTION}>
         <h2>Buttons</h2>
         <Button>Primary</Button>
