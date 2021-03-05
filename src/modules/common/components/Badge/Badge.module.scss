@@ -1,0 +1,21 @@
+@import '@/styles/utils';
+
+.badge {
+  color: $c-white;
+  font-weight: bold;
+
+  &_text {
+    background-color: $c-primary;
+    padding: 8px 16px;
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  &_number {
+    background-color: $c-danger;
+    font-size: 10px;
+    line-height: 16px;
+    padding: 2px 4px;
+    border-radius: 10px;
+  }
+}
