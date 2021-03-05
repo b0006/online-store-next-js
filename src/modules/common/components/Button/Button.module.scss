@@ -1,0 +1,78 @@
+@import '@/styles/utils';
+
+.button {
+  border: none;
+  padding: 16px 32px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: $font-family-secondary;
+  cursor: pointer;
+
+  &_primary {
+    background-color: $c-primary;
+    color: $c-white;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 0px 4px 4px rgba(29, 31, 34, 0.25);
+    }
+
+    &:active {
+      background-color: $c-primary-variant;
+    }
+  }
+
+  &_secondary {
+    background-color: $c-secondary;
+    color: $c-white;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 0px 4px 4px rgba(29, 31, 34, 0.25);
+    }
+
+    &:active {
+      background-color: $c-secondary-variant;
+    }
+  }
+
+  &_light {
+    background-color: $c-light;
+    color: $c-dark-variant;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 0px 4px 4px rgba(29, 31, 34, 0.25);
+    }
+
+    &:active {
+      background-color: $c-light-variant;
+    }
+  }
+
+  &_outlined {
+    background-color: transparent;
+    color: $c-text;
+    border: 2px solid $c-primary;
+
+    &:hover {
+      box-shadow: 0px 4px 4px rgba(29, 31, 34, 0.25);
+    }
+
+    &:active {
+      border: 2px solid $c-primary-variant;
+      color: $c-text-muted;
+    }
+  }
+
+  &_disable {
+    cursor: not-allowed;
+    background-color: $c-light;
+    color: $c-text-muted;
+
+    &:hover, &:active {
+      box-shadow: none;
+      background-color: $c-light;
+    }
+  }
+}
