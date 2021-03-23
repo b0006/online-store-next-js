@@ -4,6 +4,7 @@ import { Hidden, Visible } from 'react-grid-system';
 import Container from '../Container';
 import CartMobile from './CartMobile';
 import HeaderDesktop from './HeaderDesktop';
+import HeaderMobile from './HeaderMobile';
 
 const Header: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Header: React.FC = () => {
         <HeaderDesktop />
       </Hidden>
       <Visible xs sm md lg>
+        <HeaderMobile />
         <CartMobile />
       </Visible>
     </Container>

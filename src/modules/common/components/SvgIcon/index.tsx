@@ -8,6 +8,7 @@ import HomeIcon from '../../../../assets/icons/home.svg';
 import MenuIcon from '../../../../assets/icons/menu.svg';
 import PersonIcon from '../../../../assets/icons/person.svg';
 import RestingIcon from '../../../../assets/icons/resting.svg';
+import BurgerIcon from '../../../../assets/icons/burger.svg';
 
 export const ICON_LIST = {
   cart: CartIcon,
@@ -18,6 +19,7 @@ export const ICON_LIST = {
   menu: MenuIcon,
   person: PersonIcon,
   resting: RestingIcon,
+  burger: BurgerIcon,
 };
 
 interface IProps extends React.SVGAttributes<SVGElement> {
