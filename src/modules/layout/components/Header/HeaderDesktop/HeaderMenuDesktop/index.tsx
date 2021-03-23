@@ -1,9 +1,9 @@
 import React from 'react';
 import cn from 'classnames';
 
-import styles from './MenuDesktop.module.scss';
+import styles from './HeaderMenuDesktop.module.scss';
 
-const MenuDesktop: React.FC = () => {
+const HeaderMenuDesktop: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <nav className={styles.list}>
@@ -21,4 +21,4 @@ const MenuDesktop: React.FC = () => {
   );
 };
 
-export default MenuDesktop;
+export default HeaderMenuDesktop;
