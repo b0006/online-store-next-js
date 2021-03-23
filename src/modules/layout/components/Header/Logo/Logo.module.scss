@@ -1,4 +1,11 @@
+@import '@/styles/utils';
+
 .img {
-  width: 200px;
-  height: 40px;
+  width: 160px;
+  height: 36px;
+
+  @media #{$screen-xs} {
+    width: 200px;
+    height: 40px;
+  }
 }

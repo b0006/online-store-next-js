@@ -1,0 +1,24 @@
+@import '@/styles/utils';
+
+$offset-position: 99;
+
+.menu-mobile {
+  position: fixed;
+  left: -#{$offset-position}px;
+  right: calc(100vw + #{$offset-position}px);
+  top: 0;
+  bottom: 0;
+  transition: left 0.3s, right 0.3s;
+  background-color: $c-white;
+  z-index: 20;
+
+  &_show {
+    left: 0;
+    right: 0;
+  }
+
+  &__header {
+    background-color: $c-light;
+    min-height: 50px;
+  }
+}

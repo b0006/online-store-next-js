@@ -4,11 +4,17 @@
   position: relative;
   margin: 12px 0;
 
-  &__menu {
+  &__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
     position: absolute;
     left: 0;
-    padding: 14px;
-    cursor: pointer;
+    padding: 10px;
+
+    @media #{$screen-xs} {
+      padding: 14px;
+    }
   }
 
   &__icon {
