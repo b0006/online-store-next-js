@@ -1,9 +1,1 @@
 @import '@/styles/utils';
-
-.footer {
-  padding-bottom: 70px;
-
-  @media #{$screen-md} {
-    padding-bottom: 0;
-  }
-}

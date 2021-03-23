@@ -5,7 +5,7 @@ import SvgIcon from '../../../common/components/SvgIcon';
 import Container from '../Container';
 import Logo from './Logo';
 import MenuDesktop from './MenuDesktop';
-import MenuMobile from './MenuMobile';
+import CartMobile from './CartMobile';
 
 import styles from './Header.module.scss';
 
@@ -32,7 +32,7 @@ const Header: React.FC = () => {
             </div>
           </Hidden>
           <Visible xs sm md lg>
-            <MenuMobile />
+            <CartMobile />
           </Visible>
         </div>
       </div>
