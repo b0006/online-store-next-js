@@ -1,7 +1,7 @@
 import React from 'react';
 import { Hidden, Visible } from 'react-grid-system';
 
-import Icon from '../../../common/components/Icon';
+import SvgIcon from '../../../common/components/SvgIcon';
 import Container from '../Container';
 import Logo from './Logo';
 import MenuDesktop from './MenuDesktop';
@@ -26,9 +26,9 @@ const Header: React.FC = () => {
         <div className={styles.right}>
           <Hidden xs sm md lg>
             <div className={styles.icons}>
-              <Icon className={styles.icon} type="person" />
-              <Icon className={styles.icon} type="favorite" />
-              <Icon className={styles.icon} type="cart" />
+              <SvgIcon className={styles.icon} kind="person" />
+              <SvgIcon className={styles.icon} kind="favorite" />
+              <SvgIcon className={styles.icon} kind="cart" />
             </div>
           </Hidden>
           <Visible xs sm md lg>

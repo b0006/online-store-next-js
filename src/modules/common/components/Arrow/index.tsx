@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import Icon from '../Icon';
+import SvgIcon from '../SvgIcon';
 
 import styles from './Arrow.module.scss';
 
@@ -13,7 +13,7 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Arrow: React.FC<IProps> = ({ theme = 'default', direction, ...rest }) => {
   return (
     <button className={cn(styles.arrow, styles[`arrow_${theme}`])} {...rest}>
-      <Icon className={cn(styles['arrow-icon'], styles[`arrow-icon_${direction}`])} type="arrow-left" />
+      <SvgIcon className={cn(styles['arrow-icon'], styles[`arrow-icon_${direction}`])} kind="arrow-left" />
     </button>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import Container from '../modules/layout/components/Container';
 import Button from '../modules/common/components/Button';
 import Badge from '../modules/common/components/Badge';
-import Icon from '../modules/common/components/Icon';
+import SvgIcon from '../modules/common/components/SvgIcon';
 import Arrow from '../modules/common/components/Arrow';
 import Breadcrumbs from '../modules/common/components/Breadcrumbs';
 import CircleClose from '../modules/common/components/CircleClose';
@@ -50,7 +50,7 @@ export default function UI(): JSX.Element {
       </div>
       <div style={STYLE_SECTION}>
         <h2>Icons</h2>
-        <Icon style={{ width: '25px', height: '12px' }} type="arrow-left" />
+        <SvgIcon style={{ width: '25px', height: '12px' }} kind="arrow-left" />
       </div>
       <div style={STYLE_SECTION}>
         <h2>Arrows</h2>

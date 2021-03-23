@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import cn from 'classnames';
 
-import Icon from '../Icon';
+import SvgIcon, { ICON_LIST } from '../SvgIcon';
 
 import styles from './Input.module.scss';
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  icon?: string;
+  icon?: keyof typeof ICON_LIST;
   error?: string;
 }
 
@@ -28,7 +28,7 @@ const Input = React.forwardRef((props: IProps, ref: React.LegacyRef<HTMLInputEle
         autoComplete="off"
       />
       <div className={cn(styles.title, { [styles.title_value]: hasValue, [styles.title_required]: required })}>
-        {icon && <Icon className={cn(styles.icon, { [styles.icon_value]: hasValue })} type={icon} />}
+        {icon && <SvgIcon className={cn(styles.icon, { [styles.icon_value]: hasValue })} kind={icon} />}
         <span>{placeholder}</span>
       </div>
       {error && <span className={styles.error}>{error}</span>}

@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import Icon from '../Icon';
+import SvgIcon from '../SvgIcon';
 
 import styles from './CircleClose.module.scss';
 
@@ -20,7 +20,7 @@ const CircleClose: React.FC<IProps> = ({ size = 'big', disabled, className, ...r
       disabled={disabled}
       {...rest}
     >
-      <Icon className={styles.close__icon} type="close" />
+      <SvgIcon className={styles.close__icon} kind="close" />
     </button>
   );
 };
