@@ -5,67 +5,18 @@ import SvgIcon from 'src/modules/common/components/SvgIcon';
 import { categoryMock } from 'src/mock';
 
 import styles from './HeaderMenuMobile.module.scss';
+import useCategories from '../useCategories';
 
 interface IProps {
   isShowedMenu: boolean;
   onClose: () => void;
 }
 
-// TODO: remove any
-const getCategoryListById = (categoryList: any[], categoryId: number | null | undefined): any[] => {
-  if (categoryId === null || categoryId === undefined) {
-    return categoryList;
-  }
-
-  return categoryList.reduce((acc, category) => {
-    const hasChildren = category.childList && category.childList.length;
-    if (category.id !== categoryId && hasChildren) {
-      return categoryId
-        ? [...acc, ...getCategoryListById(category.childList, categoryId)]
-        : getCategoryListById(category.childList, categoryId);
-    }
-    return hasChildren ? [...acc, ...category.childList] : acc;
-  }, []);
-};
-
-const removeFromHistory = (list: number[], target: number | null | undefined): number[] => {
-  if (typeof target !== 'number') {
-    return list;
-  }
-
-  const cloneList = [...list];
-
-  const findIndex = list.indexOf(target);
-  if (findIndex > -1) {
-    cloneList.splice(findIndex, 1);
-  }
-
-  return cloneList;
-};
-
 const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
-  const [currentCategory, setCurrentCategory] = useState<number | null | undefined>(null);
-  const [historyMenu, setHistoryMenu] = useState<number[]>([]);
-
-  const currentMenuList = getCategoryListById(categoryMock, currentCategory);
+  const { currentTitle, currentMenuList, onBackHistory, onCategoryChange } = useCategories(categoryMock);
 
   const onBackClick = (): void => {
-    const newHistory = removeFromHistory(historyMenu, currentCategory);
-    setHistoryMenu(newHistory);
-    if (currentCategory !== null) {
-      setCurrentCategory(newHistory[newHistory.length - 1] || null);
-    } else {
-      onClose();
-    }
-  };
-
-  const onCategoryChange = (menuId: number): void => {
-    setCurrentCategory(menuId);
-    setHistoryMenu((prevList) => {
-      const list = [...prevList];
-      list.push(menuId);
-      return list;
-    });
+    onBackHistory(onClose);
   };
 
   return (
@@ -78,6 +29,7 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
         <button type="button" onClick={onBackClick}>
           <SvgIcon style={{ width: '20px' }} kind="chevron" />
         </button>
+        <div>{currentTitle}</div>
       </div>
       <ul>
         {currentMenuList.map((menu) => {
