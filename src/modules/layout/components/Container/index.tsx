@@ -1,11 +1,24 @@
 import React from 'react';
-import { Container as GridContainer, ContainerProps } from 'react-grid-system';
+import cn from 'classnames';
 
-const Container = React.forwardRef(({ children, ...rest }: ContainerProps, ref: React.LegacyRef<never>) => (
-  <GridContainer {...rest} ref={ref} style={{ width: '100%' }}>
-    {children}
-  </GridContainer>
-));
+import styles from './Container.module.scss';
+
+interface IProps {
+  children: React.ReactNode | React.ReactNode[];
+  className?: string;
+  as?: 'div' | 'header' | 'main' | 'footer';
+}
+
+const Container = React.forwardRef(
+  ({ children, className, as = 'div', ...rest }: IProps, ref: React.LegacyRef<never>) => {
+    const Tag = as;
+    return (
+      <Tag {...rest} className={cn(className, styles.container)} ref={ref}>
+        {children}
+      </Tag>
+    );
+  }
+);
 
 Container.displayName = 'Container';
 

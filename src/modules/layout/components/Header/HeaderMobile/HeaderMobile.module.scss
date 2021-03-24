@@ -3,6 +3,10 @@
 .header-mobile {
   position: relative;
   margin: 12px 0;
+  
+  @media #{$screen-md} {
+    display: none;
+  }
 
   &__button {
     background-color: transparent;

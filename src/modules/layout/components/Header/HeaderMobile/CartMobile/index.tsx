@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SvgIcon from '../../../../common/components/SvgIcon';
+import SvgIcon from '../../../../../common/components/SvgIcon';
 
 import styles from './CartMobile.module.scss';
 

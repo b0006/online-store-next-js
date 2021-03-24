@@ -6,7 +6,7 @@ import styles from './Footer.module.scss';
 
 const Footer: React.FC = () => {
   return (
-    <Container className={styles.footer} component="footer">
+    <Container className={styles.footer} as="footer">
       Footer
     </Container>
   );

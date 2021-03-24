@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Logo from '../Logo';
+import CartMobile from './CartMobile';
 import SvgIcon from '../../../../common/components/SvgIcon';
 
 import Menu from './HeaderMenuMobile';
@@ -27,6 +28,7 @@ const HeaderMobile: React.FC = () => {
         <Logo />
       </div>
       <Menu isShowedMenu={isShowedMenu} onClose={onCloseMenu} />
+      <CartMobile />
     </div>
   );
 };
