@@ -190,6 +190,12 @@ export default [
           {
             id: 331,
             title: 'Sandals',
+            childList: [
+              {
+                id: 3311,
+                title: 'Small',
+              },
+            ],
           },
           {
             id: 332,

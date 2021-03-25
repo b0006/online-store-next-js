@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 
 import Container from 'src/modules/layout/components/Container';
@@ -14,10 +14,16 @@ interface IProps {
 }
 
 const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
-  const { currentTitle, currentMenuList, onBackHistory, onCategoryChange } = useCategories(categoryMock);
+  const { currentTitle, currentMenuList, prevMenuList, prevTitle, onBackHistory, onCategoryChange } = useCategories(
+    categoryMock
+  );
 
   const onBackClick = (): void => {
     onBackHistory(onClose);
+  };
+
+  const onClickCategoryChange = (menuId: number) => () => {
+    onCategoryChange(menuId);
   };
 
   return (
@@ -32,31 +38,33 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
         </button>
         <div>{currentTitle}</div>
       </Container>
-      <ul className={styles['menu-mobile__list']}>
-        {currentMenuList.map((menu) => {
-          const hasChildren = menu.childList && menu.childList.length;
+      <div className={styles['menu-mobile__inner']}>
+        <ul className={cn(styles['menu-mobile__list'])}>
+          {currentMenuList.map((menu) => {
+            const hasChildren = menu.childList && menu.childList.length;
 
-          return (
-            <li key={menu.id}>
-              <Container className={styles['menu-mobile__item']}>
-                <div className={styles['menu-mobile__title']}>{menu.title}</div>
-                {hasChildren && (
-                  <button
-                    className={styles['menu-mobile__button']}
-                    key={menu.id}
-                    onClick={() => onCategoryChange(menu.id)}
-                  >
-                    <SvgIcon
-                      className={cn(styles['menu-mobile__icon'], styles['menu-mobile__icon_right'])}
-                      kind="chevron"
-                    />
-                  </button>
-                )}
-              </Container>
-            </li>
-          );
-        })}
-      </ul>
+            return (
+              <li key={menu.id}>
+                <Container className={styles['menu-mobile__item']}>
+                  <div className={styles['menu-mobile__title']}>{menu.title}</div>
+                  {hasChildren && (
+                    <button
+                      className={styles['menu-mobile__button']}
+                      key={menu.id}
+                      onClick={onClickCategoryChange(menu.id)}
+                    >
+                      <SvgIcon
+                        className={cn(styles['menu-mobile__icon'], styles['menu-mobile__icon_right'])}
+                        kind="chevron"
+                      />
+                    </button>
+                  )}
+                </Container>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { usePrevious } from 'src/hooks/usePrevious';
 
 // TODO: remove any
 const getCategoryListById = (categoryList: any[], categoryId: number | null): { title: string; list: any[] } => {
@@ -69,7 +70,12 @@ const useCategories = (categoryList: any[]) => {
 
   const { title, list } = getCategoryListById(categoryList, currentCategoryId);
 
+  const prevList = usePrevious(list);
+  const prevTitle = usePrevious(title);
+
   return {
+    prevMenuList: prevList,
+    prevTitle: prevTitle,
     currentTitle: title,
     currentMenuList: list,
     onBackHistory,
