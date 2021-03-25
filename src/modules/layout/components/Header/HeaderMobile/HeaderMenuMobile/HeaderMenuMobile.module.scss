@@ -21,4 +21,38 @@ $offset-position: 99;
     background-color: $c-light;
     min-height: 50px;
   }
+
+  &__icon {
+    width: 7px;
+    height: 14px;
+
+    &_right {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__button, &__back {
+    background-color: transparent;
+    border: none;
+  }
+
+  &__button {
+    background-color: $c-light;
+    padding: 15px;
+    cursor: pointer;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid $c-light;
+    min-height: 54px;
+  }
+
+  &__title {
+    width: 100%;
+    margin-right: 15px;
+  }
 }
