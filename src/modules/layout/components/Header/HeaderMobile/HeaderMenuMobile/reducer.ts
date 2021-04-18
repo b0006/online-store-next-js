@@ -91,7 +91,7 @@ const removeAfterCategoryId = (list: IBreadcrumb[], afterId: number): IBreadcrum
   return cloneList;
 };
 
-type Action =
+type TAction =
   | {
       type: ACTIONS.NEXT;
       payload: {
@@ -108,7 +108,7 @@ type Action =
       };
     };
 
-export function reducer(state: IState, action: Action): IState {
+export function reducer(state: IState, action: TAction): IState {
   switch (action.type) {
     case ACTIONS.NEXT: {
       const categoryId = action.payload.currentCategoryId;
