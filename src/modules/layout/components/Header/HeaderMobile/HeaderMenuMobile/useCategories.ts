@@ -8,6 +8,7 @@ interface IReturn {
   onBackHistory: () => void;
   onCategoryChange: (categoryId: number) => void;
   onJumpCategory: (categoryId: number) => void;
+  onReset: () => void;
 }
 
 const useCategories = (categoryList: ICategoryItem[]): IReturn => {
@@ -35,6 +36,13 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
     });
   };
 
+  const onReset = (): void => {
+    dispatch({
+      type: ACTIONS.RESET,
+      payload: { categoryList },
+    });
+  };
+
   return {
     breadcrumbList: state.breadcrumbList,
     currentMenuList: state.currentMenuList,
@@ -42,6 +50,7 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
     onBackHistory,
     onCategoryChange,
     onJumpCategory,
+    onReset,
   };
 };
 

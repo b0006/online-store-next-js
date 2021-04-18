@@ -21,6 +21,7 @@ export enum ACTIONS {
   NEXT,
   JUMP,
   PREV,
+  RESET,
 }
 
 export const initialState: IState = {
@@ -106,6 +107,12 @@ type TAction =
       payload: {
         currentCategoryId: number;
       };
+    }
+  | {
+      type: ACTIONS.RESET;
+      payload: {
+        categoryList: ICategoryItem[];
+      };
     };
 
 export function reducer(state: IState, action: TAction): IState {
@@ -147,6 +154,13 @@ export function reducer(state: IState, action: TAction): IState {
         currentMenuList: list || [],
         breadcrumbList: newBreadcrumbList,
         isRoot: newBreadcrumbList.length <= 0,
+      };
+    }
+    case ACTIONS.RESET: {
+      return {
+        ...initialState,
+        categoryList: action.payload.categoryList,
+        currentMenuList: action.payload.categoryList,
       };
     }
     default:

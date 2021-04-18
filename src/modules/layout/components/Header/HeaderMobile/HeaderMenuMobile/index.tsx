@@ -14,9 +14,15 @@ interface IProps {
 }
 
 const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
-  const { breadcrumbList, isRoot, currentMenuList, onBackHistory, onJumpCategory, onCategoryChange } = useCategories(
-    categoryMock
-  );
+  const {
+    breadcrumbList,
+    isRoot,
+    currentMenuList,
+    onReset,
+    onBackHistory,
+    onJumpCategory,
+    onCategoryChange,
+  } = useCategories(categoryMock);
 
   const onBackClick = (): void => {
     if (isRoot) {
@@ -45,6 +51,9 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
           <SvgIcon className={styles['menu-mobile__icon']} kind="chevron" />
         </button>
         <div>
+          <button type="button" onClick={onReset} disabled={breadcrumbList.length <= 0}>
+            Menu
+          </button>
           {breadcrumbList.map((breadcrumb, index) => (
             <button
               type="button"
