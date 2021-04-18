@@ -14,7 +14,9 @@ interface IProps {
 }
 
 const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
-  const { breadcrumbList, isRoot, currentMenuList, onBackHistory, onCategoryChange } = useCategories(categoryMock);
+  const { breadcrumbList, isRoot, currentMenuList, onBackHistory, onJumpCategory, onCategoryChange } = useCategories(
+    categoryMock
+  );
 
   const onBackClick = (): void => {
     if (isRoot) {
@@ -28,6 +30,10 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
     onCategoryChange(categoryId);
   };
 
+  const onClickBreadcrumb = (categoryId: number) => () => {
+    onJumpCategory(categoryId);
+  };
+
   return (
     <div
       className={cn(styles['menu-mobile'], {
@@ -39,8 +45,15 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
           <SvgIcon className={styles['menu-mobile__icon']} kind="chevron" />
         </button>
         <div>
-          {breadcrumbList.map((breadcrumb) => (
-            <span key={breadcrumb.id}>{breadcrumb.title} </span>
+          {breadcrumbList.map((breadcrumb, index) => (
+            <button
+              type="button"
+              onClick={onClickBreadcrumb(breadcrumb.id)}
+              disabled={index === breadcrumbList.length - 1}
+              key={breadcrumb.id}
+            >
+              {breadcrumb.title}
+            </button>
           ))}
         </div>
       </Container>

@@ -7,6 +7,7 @@ interface IReturn {
   isRoot: boolean;
   onBackHistory: () => void;
   onCategoryChange: (categoryId: number) => void;
+  onJumpCategory: (categoryId: number) => void;
 }
 
 const getCategoryDataById = (
@@ -37,6 +38,15 @@ const getCategoryDataById = (
         }
       : acc;
   }, {});
+};
+
+const removeAfterCategoryId = (list: IBreadcrumb[], afterId: number): IBreadcrumb[] => {
+  const cloneList = [...list];
+  const findIndex = list.findIndex((item) => item.id === afterId);
+  if (findIndex > -1) {
+    cloneList.length = findIndex + 1;
+  }
+  return cloneList;
 };
 
 const removeFromDataList = (list: IBreadcrumb[], targetId: number | null): IBreadcrumb[] => {
@@ -91,12 +101,28 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
       payload: {
         currentCategoryId: categoryId,
         currentMenuList: list,
-        currentTitle: title,
         breadcrumbList: addToHistory(state.breadcrumbList, { id: categoryId, title: title || '' }),
         isRoot: false,
       },
     });
   };
+
+  const onJumpCategory = (categoryId: number): void => {
+    const { list } = getCategoryDataById(state.categoryList, categoryId);
+    const newBreadcrumbList = removeAfterCategoryId(state.breadcrumbList, categoryId);
+
+    dispatch({
+      type: ACTIONS.CHANGE_CATEGORY,
+      payload: {
+        currentCategoryId: categoryId,
+        currentMenuList: list,
+        breadcrumbList: newBreadcrumbList,
+        isRoot: newBreadcrumbList.length <= 0,
+      },
+    });
+  };
+
+  console.log(state);
 
   return {
     breadcrumbList: state.breadcrumbList,
@@ -104,6 +130,7 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
     isRoot: state.isRoot,
     onBackHistory,
     onCategoryChange,
+    onJumpCategory,
   };
 };
 

@@ -2,7 +2,6 @@ interface IState {
   categoryList: ICategoryItem[];
   currentCategoryId: number | null;
   currentMenuList: ICategoryItem[];
-  currentTitle: string;
   breadcrumbList: IBreadcrumb[];
   isRoot: boolean;
 }
@@ -33,7 +32,6 @@ export const initialState: IState = {
   currentMenuList: [],
   breadcrumbList: [],
   isRoot: true,
-  currentTitle: '',
 };
 
 export function reducer(state: IState, action: IAction): IState {
