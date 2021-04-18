@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cn from 'classnames';
 
 import Container from 'src/modules/layout/components/Container';
@@ -17,7 +17,6 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
   const { historyTitleList, isRoot, currentMenuList, onBackHistory, onCategoryChange } = useCategories(categoryMock);
 
   const onBackClick = (): void => {
-    console.log('onBackClick');
     if (isRoot) {
       onClose();
     } else {
@@ -39,7 +38,11 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
         <button className={styles['menu-mobile__back']} type="button" onClick={onBackClick}>
           <SvgIcon className={styles['menu-mobile__icon']} kind="chevron" />
         </button>
-        <div>currentTitle</div>
+        <div>
+          {historyTitleList.map((title) => (
+            <span key={title}>{title} </span>
+          ))}
+        </div>
       </Container>
       <div className={styles['menu-mobile__inner']}>
         <ul className={cn(styles['menu-mobile__list'])}>

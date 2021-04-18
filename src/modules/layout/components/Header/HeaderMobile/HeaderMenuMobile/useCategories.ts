@@ -1,5 +1,4 @@
-import { useState, useReducer } from 'react';
-import { usePrevious } from 'src/hooks/usePrevious';
+import { useReducer } from 'react';
 import { initialState, reducer, ACTIONS, ICategoryItem } from './reducer';
 
 interface IReturn {
@@ -10,7 +9,6 @@ interface IReturn {
   onCategoryChange: (categoryId: number) => void;
 }
 
-// TODO: remove any
 const getCategoryDataById = (
   categoryList: ICategoryItem[],
   categoryId?: number | null
@@ -62,12 +60,6 @@ const addToHistory = <T = number>(list: T[], target: T): T[] => {
   return cloneList;
 };
 
-// const removeLastElement = <T>(list: T[]): T[] => {
-//   const cloneList = list;
-//   return cloneList.splice(-1, 1);
-// };
-
-// TODO: remove any
 const useCategories = (categoryList: ICategoryItem[]): IReturn => {
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
@@ -92,13 +84,14 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
   };
 
   const onCategoryChange = (categoryId: number): void => {
-    const { list } = getCategoryDataById(state.categoryList, categoryId);
+    const { list, title } = getCategoryDataById(state.categoryList, categoryId);
 
     dispatch({
-      type: ACTIONS.CHANGE_CATEGORY,
+      type: ACTIONS.NEXT_CATEGORY,
       payload: {
         currentCategoryId: categoryId,
         currentMenuList: list,
+        currentTitle: title,
         historyMenuId: addToHistory(state.historyMenuId, categoryId),
         isRoot: false,
       },
@@ -106,7 +99,7 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
   };
 
   return {
-    historyTitleList: [],
+    historyTitleList: state.historyTitleList,
     currentMenuList: state.currentMenuList,
     isRoot: state.isRoot,
     onBackHistory,
