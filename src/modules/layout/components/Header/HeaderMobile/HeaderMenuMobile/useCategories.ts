@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
-import { initialState, reducer, ACTIONS, ICategoryItem } from './reducer';
+import { initialState, reducer, ACTIONS, ICategoryItem, IBreadcrumb } from './reducer';
 
 interface IReturn {
-  historyTitleList: string[];
+  breadcrumbList: IBreadcrumb[];
   currentMenuList: ICategoryItem[];
   isRoot: boolean;
   onBackHistory: () => void;
@@ -39,14 +39,14 @@ const getCategoryDataById = (
   }, {});
 };
 
-const removeFromHistoryById = (list: number[], targetId: number | null): number[] => {
+const removeFromDataList = (list: IBreadcrumb[], targetId: number | null): IBreadcrumb[] => {
   if (typeof targetId !== 'number') {
     return list;
   }
 
   const cloneList = [...list];
 
-  const findIndex = list.indexOf(targetId);
+  const findIndex = list.findIndex((item) => item.id === targetId);
   if (findIndex > -1) {
     cloneList.splice(findIndex, 1);
   }
@@ -68,16 +68,16 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
   });
 
   const onBackHistory = (): void => {
-    const newHistory = removeFromHistoryById(state.historyMenuId, state.currentCategoryId);
-    const categoryId = newHistory[newHistory.length - 1] || null;
+    const newBreadcrumbList = removeFromDataList(state.breadcrumbList, state.currentCategoryId);
+    const categoryId = newBreadcrumbList[newBreadcrumbList.length - 1]?.id || null;
     const { list } = getCategoryDataById(state.categoryList, categoryId);
 
     dispatch({
-      type: ACTIONS.BACK_CATEGORY,
+      type: ACTIONS.CHANGE_CATEGORY,
       payload: {
         currentCategoryId: categoryId,
         currentMenuList: list,
-        historyMenuId: newHistory,
+        breadcrumbList: newBreadcrumbList,
         isRoot: categoryId === null ? true : false,
       },
     });
@@ -87,19 +87,19 @@ const useCategories = (categoryList: ICategoryItem[]): IReturn => {
     const { list, title } = getCategoryDataById(state.categoryList, categoryId);
 
     dispatch({
-      type: ACTIONS.NEXT_CATEGORY,
+      type: ACTIONS.CHANGE_CATEGORY,
       payload: {
         currentCategoryId: categoryId,
         currentMenuList: list,
         currentTitle: title,
-        historyMenuId: addToHistory(state.historyMenuId, categoryId),
+        breadcrumbList: addToHistory(state.breadcrumbList, { id: categoryId, title: title || '' }),
         isRoot: false,
       },
     });
   };
 
   return {
-    historyTitleList: state.historyTitleList,
+    breadcrumbList: state.breadcrumbList,
     currentMenuList: state.currentMenuList,
     isRoot: state.isRoot,
     onBackHistory,
