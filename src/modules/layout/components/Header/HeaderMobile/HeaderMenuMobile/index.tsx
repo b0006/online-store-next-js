@@ -6,7 +6,7 @@ import SvgIcon from 'src/modules/common/components/SvgIcon';
 import { categoryMock } from 'src/mock';
 
 import styles from './HeaderMenuMobile.module.scss';
-import useCategories from '../useCategories';
+import useCategories from './useCategories';
 
 interface IProps {
   isShowedMenu: boolean;
@@ -14,16 +14,19 @@ interface IProps {
 }
 
 const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
-  const { currentTitle, currentMenuList, prevMenuList, prevTitle, onBackHistory, onCategoryChange } = useCategories(
-    categoryMock
-  );
+  const { historyTitleList, isRoot, currentMenuList, onBackHistory, onCategoryChange } = useCategories(categoryMock);
 
   const onBackClick = (): void => {
-    onBackHistory(onClose);
+    console.log('onBackClick');
+    if (isRoot) {
+      onClose();
+    } else {
+      onBackHistory();
+    }
   };
 
-  const onClickCategoryChange = (menuId: number) => () => {
-    onCategoryChange(menuId);
+  const onClickCategoryChange = (categoryId: number) => () => {
+    onCategoryChange(categoryId);
   };
 
   return (
@@ -36,7 +39,7 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
         <button className={styles['menu-mobile__back']} type="button" onClick={onBackClick}>
           <SvgIcon className={styles['menu-mobile__icon']} kind="chevron" />
         </button>
-        <div>{currentTitle}</div>
+        <div>currentTitle</div>
       </Container>
       <div className={styles['menu-mobile__inner']}>
         <ul className={cn(styles['menu-mobile__list'])}>
