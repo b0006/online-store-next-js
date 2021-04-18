@@ -50,13 +50,19 @@ const HeaderMenuMobile: React.FC<IProps> = ({ isShowedMenu, onClose }) => {
         <button className={styles['menu-mobile__back']} type="button" onClick={onBackClick}>
           <SvgIcon className={styles['menu-mobile__icon']} kind="chevron" />
         </button>
-        <div>
-          <button type="button" onClick={onReset} disabled={breadcrumbList.length <= 0}>
+        <div className={styles['menu-mobile__breadcrumb']}>
+          <button
+            className={styles['menu-mobile__breadcrumb-item']}
+            type="button"
+            onClick={onReset}
+            disabled={breadcrumbList.length <= 0}
+          >
             Menu
           </button>
           {breadcrumbList.map((breadcrumb, index) => (
             <button
               type="button"
+              className={styles['menu-mobile__breadcrumb-item']}
               onClick={onClickBreadcrumb(breadcrumb.id)}
               disabled={index === breadcrumbList.length - 1}
               key={breadcrumb.id}

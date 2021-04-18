@@ -18,8 +18,24 @@ $offset-position: 99;
   }
 
   &__header {
+    display: flex;
+    align-items: center;
     background-color: $c-light;
     min-height: 50px;
+  }
+
+  &__breadcrumb {
+    margin-left: 16px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+
+    &-item {
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+      margin-right: 8px;
+      font-size: 14px;
+    }
   }
 
   &__icon {
@@ -34,6 +50,11 @@ $offset-position: 99;
   &__button, &__back {
     background-color: transparent;
     border: none;
+  }
+
+  &__back {
+    padding: 12px 12px 12px 0;
+    cursor: pointer;
   }
 
   &__button {
